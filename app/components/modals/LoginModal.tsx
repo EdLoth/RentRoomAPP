@@ -1,7 +1,6 @@
 'use client'
 
 import { signIn } from 'next-auth/react'
-import axios from 'axios'
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { useCallback, useState } from 'react';
@@ -22,6 +21,7 @@ import { useRouter } from 'next/navigation';
 
 const LoginModal = () => {
   const router = useRouter()
+
   const registerModal = useRegisterModal()
   const loginModal = useLoginModal()
 
@@ -42,20 +42,25 @@ const LoginModal = () => {
       ...data,
       redirect: false,
     })
-    .then((callback) => {
-      setIsLoading(false)
+      .then((callback) => {
+        setIsLoading(false)
 
-      if(callback?.ok) {
-        toast.success('Logged in');
-        router.refresh();
-        loginModal.onClose()
-      }
-
-      if(callback?.error) {
-        toast.error(callback.error);
-      }
-    })
+        if (callback?.ok) {
+          toast.success('Logged in');
+          router.refresh();
+          loginModal.onClose()
+        }
+ 
+        if (callback?.error) {
+          toast.error(callback.error);
+        }
+      })
   }
+
+  const toggle = useCallback(() => {
+    loginModal.onClose()
+    registerModal.onOpen()
+  }, [loginModal, registerModal])
 
   const bodyContent = (
     <div className='flex flex-col gap-4'>
@@ -90,16 +95,16 @@ const LoginModal = () => {
         outline
         label='Continue with Google'
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn('google')}
       />
       <Button
         outline
         label='Continue with Github'
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn('github')}
       />
       <div
-      className='
+        className='
         text-neutral-500
         text-center
         mt-4
@@ -107,22 +112,22 @@ const LoginModal = () => {
       '
       >
         <div
-        className='
+          className='
           justify-center flex flex-row items-center gap-2
         '
         >
           <div>
-            Already have an account?
+            First time using RentRoom?
           </div>
           <div
-          onClick={registerModal.onClose}
-          className='
+            onClick={toggle}
+            className='
             text-neutral-800
             cursor-pointer
             hover:underline
           '
           >
-            Login
+            Create an account
           </div>
         </div>
       </div>

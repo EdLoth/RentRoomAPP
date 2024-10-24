@@ -10,6 +10,7 @@ import {
   useForm
 } from 'react-hook-form'
 
+import useLoginModal from '@/app/hooks/useLoginModal';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 import Modal from './Modal';
 import Heading from '../Heading';
@@ -19,6 +20,7 @@ import Button from '../Button';
 import { signIn } from 'next-auth/react';
 
 const RegisterModal = () => {
+  const loginModal = useLoginModal()
   const registerModal = useRegisterModal()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -34,7 +36,7 @@ const RegisterModal = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true)
 
-    axios.post('/api/auth/register', data)
+    axios.post('/api/register', data)
       .then(() => {
         registerModal.onClose()
       })
@@ -45,6 +47,12 @@ const RegisterModal = () => {
         setIsLoading(false)
       })
   }
+
+  const toggle = useCallback(() => {
+    registerModal.onClose()
+    loginModal.onOpen()
+  }, [loginModal, registerModal])
+
 
   const bodyContent = (
     <div className='flex flex-col gap-4'>
@@ -87,7 +95,7 @@ const RegisterModal = () => {
         outline
         label='Continue with Google'
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn('google')}
       />
       <Button
         outline
@@ -96,7 +104,7 @@ const RegisterModal = () => {
         onClick={() => signIn('github')}
       />
       <div
-      className='
+        className='
         text-neutral-500
         text-center
         mt-4
@@ -104,7 +112,7 @@ const RegisterModal = () => {
       '
       >
         <div
-        className='
+          className='
           justify-center flex flex-row items-center gap-2
         '
         >
@@ -112,8 +120,8 @@ const RegisterModal = () => {
             Already have an account?
           </div>
           <div
-          onClick={registerModal.onClose}
-          className='
+            onClick={toggle}
+            className='
             text-neutral-800
             cursor-pointer
             hover:underline
