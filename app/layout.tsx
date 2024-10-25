@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Nunito } from 'next/font/google'
+import { Nunito } from 'next/font/google';
 import Navbar from "./components/navbar/Navbar";
 import ClientOnly from "./components/ClientOnly";
 import RegisterModal from "./components/modals/RegisterModal";
@@ -14,10 +14,12 @@ const font = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "RentRoom",
-  description: "Ache o lugar ideal para sua aventura! ",
+  title: "RentRoom | O lugar perfeito para você!",
+  description: "Ache o lugar ideal para sua aventura!",
+  icons: {
+    icon: '/images/logo1x.png', // Verifique se o caminho está correto
+  },
 };
-
 
 export default async function RootLayout({
   children,
@@ -25,12 +27,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const currentUser = await getCurrentUser();
-  
+
   return (
     <html lang="en">
-      <body
-        className={`${font.className}  antialiased`}
-      >
+      <head>
+        <link rel="icon" href="/images/logo1x.png" />
+      </head>
+      <body className={`${font.className} antialiased`}>
         <ClientOnly>
           <ToasterProvider />
           <RentModal />
