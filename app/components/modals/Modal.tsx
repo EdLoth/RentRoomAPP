@@ -12,6 +12,7 @@ interface ModalProps {
   footer?: React.ReactElement;
   actionLabel: string;
   disabled?: boolean;
+  actionDisabled?: boolean; // nova prop adicionada
   secondaryAction?: () => void;
   secondaryActionLabel?: string;
 }
@@ -25,6 +26,7 @@ const Modal: React.FC<ModalProps> = ({
   footer,
   actionLabel,
   disabled,
+  actionDisabled,
   secondaryAction,
   secondaryActionLabel,
 }) => {
@@ -153,27 +155,18 @@ const Modal: React.FC<ModalProps> = ({
               <div className="relative p-6 flex-auto">
                 {body}
               </div>
-              <div
-                className="flex flex-col gap-2 p-6">
-                <div
-                  className="
-                flex
-                flex-row
-                items-center
-                gap-4
-                w-full
-              "
-                >
+              <div className="flex flex-col gap-2 p-6">
+                <div className="flex flex-row items-center gap-4 w-full">
                   {secondaryAction && secondaryActionLabel && (
                     <Button
                       outline
                       disabled={disabled}
                       label={secondaryActionLabel}
-                      onClick={handleSubmit}
+                      onClick={handleSecondaryAction}
                     />
                   )}
                   <Button
-                    disabled={disabled}
+                    disabled={actionDisabled ?? disabled} // usa actionDisabled se existir, caso contrário, usa disabled
                     label={actionLabel}
                     onClick={handleSubmit}
                   />
