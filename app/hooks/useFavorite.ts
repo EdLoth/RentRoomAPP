@@ -3,6 +3,7 @@ import { SafeUser } from "../types";
 import useLoginModal from "./useLoginModal";
 import { useCallback, useMemo } from "react";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 interface IUseFavorite {
   listingId: string;
@@ -34,9 +35,9 @@ const useFavorite= ({
     try {
       let request;
       if(hasFavorited) {
-        request = await fetch(`/api/favorites/${listingId}`)
+        request = () => axios.delete(`/api/favorites/${listingId}`)
       } else {
-        request = await fetch(`/api/favorites/${listingId}`)
+        request = () => axios.post(`/api/favorites/${listingId}`)
       }
 
       await request();
@@ -49,8 +50,8 @@ const useFavorite= ({
     currentUser,
     hasFavorited,
     listingId,
-    router,
     loginModal,
+    router,
   ]);
 
   return {
