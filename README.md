@@ -1,131 +1,138 @@
-Aqui está a documentação completa do **RentRoom**, incluindo as imagens e detalhes adicionais sobre a versão mobile e a responsividade da plataforma.
 
----
+![RentRoom Logo](https://media.graphassets.com/WVw5ct3LStuRqZSaIlN8)
 
-![Logo do RentRoom](https://media.graphassets.com/WVw5ct3LStuRqZSaIlN8)
-
-**RentRoom** é uma plataforma web projetada para facilitar a locação de imóveis, oferecendo uma experiência completa para proprietários e locatários. A plataforma conta com diversos recursos para tornar o processo de aluguel simples e seguro.
+**RentRoom** is a web platform designed to simplify property rentals, offering a complete experience for both property owners and tenants. The platform includes various features to make the rental process easy and secure.
 
 ![WebContent](https://media.graphassets.com/svpS4HAbRTeRV2DQKmQ0)
 
 ---
 
-## Índice
+## Table of Contents
 
-1. [Introdução](#introdução)
-2. [Tecnologias Usadas](#tecnologias-usadas)
-3. [Iniciando o Projeto](#iniciando-o-projeto)
-4. [Estrutura de Pastas](#estrutura-de-pastas)
-5. [Funcionalidades](#funcionalidades)
+1. [Introduction](#introduction)
+2. [Technologies Used](#technologies-used)
+3. [Starting the Project](#starting-the-project)
+4. [Folder Structure](#folder-structure)
+5. [Features](#features)
 6. [Scripts](#scripts)
-7. [Configuração do Ambiente](#configuração-do-ambiente)
-8. [Deploy na Vercel](#deploy-na-vercel)
-9. [Responsividade e Versão Mobile](#responsividade-e-versao-mobile)
-10. [Aprenda Mais](#aprenda-mais)
+7. [Environment Configuration](#environment-configuration)
+8. [Deploy on Vercel](#deploy-on-vercel)
+9. [Learn More](#learn-more)
 
 ---
 
-## Introdução
+## Introduction
 
-O RentRoom permite aos usuários buscar, listar e alugar imóveis com facilidade e segurança. Desenvolvida com um conjunto poderoso de ferramentas modernas, a plataforma busca melhorar a experiência de locação, fornecendo funcionalidades como:
+RentRoom allows users to search, list, and rent properties with ease and security. Developed with a powerful set of modern tools, the platform enhances the rental experience by providing features such as:
 
-- Busca e filtro de imóveis
-- Login e autenticação segura
-- Gerenciamento de perfil de usuário
-- Exibição de imóveis no mapa
-- Notificações e avisos em tempo real
-
----
-
-## Tecnologias Usadas
-
-O RentRoom foi construído com as seguintes tecnologias:
-
-- **[Next.js 13.5.7](https://nextjs.org/)**: Framework React para aplicações web modernas, com otimização de performance e renderização de página no lado do servidor.
-- **[Prisma](https://www.prisma.io/)**: ORM (Object-Relational Mapping) para fácil manipulação e consulta de dados.
-- **[NextAuth.js](https://next-auth.js.org/)**: Gerenciamento de autenticação simplificado, usando um adaptador para Prisma.
-- **[React](https://reactjs.org/)**: Biblioteca JavaScript para construção de interfaces interativas e reutilizáveis.
-- **[Zustand](https://zustand.surge.sh/)**: Gerenciamento de estado leve e de fácil integração com React.
-- **[Leaflet](https://leafletjs.com/) e [React-Leaflet](https://react-leaflet.js.org/)**: Exibição de mapas interativos para visualização de imóveis por localização.
-- **[Tailwind CSS](https://tailwindcss.com/)**: Framework de CSS para estilização rápida e responsiva.
-- **[Cloudinary](https://cloudinary.com/)**: Manipulação e armazenamento de imagens em nuvem.
-
-Outras bibliotecas incluem axios para requisições HTTP, date-fns para manipulação de datas, react-hook-form para controle de formulários e react-hot-toast para notificações.
+- Property search and filtering
+- Secure login and authentication
+- User profile management
+- Property display on maps
+- Real-time notifications and alerts
 
 ---
 
-## Iniciando o Projeto
+## Technologies Used
 
-Para começar a usar o RentRoom em seu ambiente local, siga as instruções abaixo:
+RentRoom was built with the following technologies:
 
-### Pré-requisitos
+- **[Next.js 13.5.7](https://nextjs.org/)**: A React framework for modern web applications, with performance optimization and server-side page rendering.
+- **[Prisma](https://www.prisma.io/)**: ORM (Object-Relational Mapping) for easy data manipulation and querying.
+- **[NextAuth.js](https://next-auth.js.org/)**: Simplified authentication management, using a Prisma adapter.
+- **[React](https://reactjs.org/)**: JavaScript library for building interactive and reusable interfaces.
+- **[Zustand](https://zustand.surge.sh/)**: Lightweight state management, easily integrated with React.
+- **[Leaflet](https://leafletjs.com/) and [React-Leaflet](https://react-leaflet.js.org/)**: Interactive maps display for property location visualization.
+- **[Tailwind CSS](https://tailwindcss.com/)**: CSS framework for fast, responsive styling.
+- **[Cloudinary](https://cloudinary.com/)**: Image manipulation and cloud storage.
 
-Certifique-se de ter o Node.js instalado.
+Other libraries include Axios for HTTP requests, date-fns for date handling, react-hook-form for form control, and react-hot-toast for notifications.
 
-### Executando o Servidor de Desenvolvimento
+---
 
-1. Clone o repositório:
+## Starting the Project
+
+To start using RentRoom in your local environment, follow the instructions below:
+
+### Prerequisites
+
+Make sure you have Node.js installed.
+
+### Running the Development Server
+
+1. Clone the repository:
 
    ```bash
    git clone https://github.com/EdLoth/RentRoomAPP.git
    cd RentRoomAPP
    ```
 
-2. Instale as dependências:
+2. Install dependencies:
 
    ```bash
    npm install
    ```
 
-3. Configure as variáveis de ambiente (consulte [Configuração do Ambiente](#configuração-do-ambiente)).
+3. Configure environment variables (see [Environment Configuration](#environment-configuration)).
 
-4. Execute o projeto em modo de desenvolvimento:
+4. Run the project in development mode:
 
    ```bash
    npm run dev
    ```
 
-   Acesse [http://localhost:3000](http://localhost:3000) para ver a aplicação no navegador.
+   Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
 ---
 
-## Estrutura de Pastas
+## Folder Structure
 
-A estrutura principal do RentRoom inclui:
+The main RentRoom structure includes:
 
-- **/app**: Páginas e rotas da aplicação.
-- **/components**: Componentes React reutilizáveis.
-- **/prisma**: Configuração do Prisma, incluindo o arquivo schema.prisma.
-- **/styles**: Arquivos de estilos globais.
-- **/public**: Recursos estáticos como imagens e ícones.
+- **/app**: Application pages and routes.
+- **/components**: Reusable React components.
+- **/prisma**: Prisma configuration, including the schema.prisma file.
+- **/styles**: Global style files.
+- **/public**: Static resources like images and icons.
 
 ---
 
-## Funcionalidades
+## Features
 
-1. **Autenticação de Usuário**: Proteção e gerenciamento de contas de usuário.
-2. **Mapeamento e Localização de Imóveis**: Exibição dos imóveis em mapas, possibilitando visualização de localização.
-3. **Favoritos**: Permite que o usuário salve imóveis para fácil acesso posterior.
-4. **Notificações**: Avisos e notificações em tempo real para atualizações relevantes.
-5. **Gerenciamento de Imagens**: Upload, manipulação e exibição de imagens de imóveis.
-6. **Filtragem e Busca Avançada**: Ferramentas de busca e filtros para encontrar imóveis específicos.
+1. **User Authentication**:  
+   Secure login and session management using NextAuth.js.
+   
+2. **Property Mapping and Location**:  
+   Interactive property map views using Leaflet and React-Leaflet.
+   
+3. **Favorites**:  
+   Save properties as favorites for quick access.
+   
+4. **Notifications**:  
+   Real-time alerts for new properties, updates, and messages.
+   
+5. **Image Management**:  
+   Upload and handle images securely with Cloudinary.
+   
+6. **Advanced Filtering and Search**:  
+   Use multiple filters to find properties matching your criteria.
 
 ---
 
 ## Scripts
 
-Os scripts mais importantes do projeto são:
+The project’s main scripts include:
 
-- `npm run dev` ou `yarn dev`: Inicia o servidor de desenvolvimento.
-- `npm run build`: Compila o projeto para produção.
-- `npm run start`: Inicia o servidor de produção.
-- `npm run lint`: Executa o linting para verificar o código.
+- `npm run dev`: Starts the development server.
+- `npm run build`: Compiles the project for production.
+- `npm run start`: Runs the production server.
+- `npm run lint`: Runs linting to check the code quality.
 
 ---
 
-## Configuração do Ambiente
+## Environment Configuration
 
-Para configurar o ambiente, crie um arquivo `.env.local` na raiz do projeto e adicione as seguintes variáveis:
+To set up the environment, create a `.env.local` file at the root of the project and add the following variables:
 
 ```plaintext
 DATABASE_URL=
@@ -137,49 +144,48 @@ GOOGLE_CLIENT_SECRET=
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
 ```
 
-Essas variáveis incluem a conexão com o banco de dados, configurações de autenticação e detalhes da API de imagem.
+These variables include the database connection, authentication settings, and image API details.
 
 ---
 
-## Deploy na Vercel
+## Deploy on Vercel
 
-A maneira mais fácil de fazer deploy do RentRoom é com a plataforma [Vercel](https://vercel.com/), que oferece integração com Next.js. Para fazer o deploy:
+The easiest way to deploy RentRoom is using the [Vercel](https://vercel.com/) platform, which offers seamless integration with Next.js. To deploy:
 
-1. Crie uma conta na Vercel.
-2. Importe o repositório do GitHub para a Vercel.
-3. Configure as variáveis de ambiente na Vercel.
-4. Clique em "Deploy".
+1. Create a Vercel account.
+2. Import the GitHub repository into Vercel.
+3. Set up the environment variables in Vercel.
+4. Click on "Deploy".
 
-Acesse a [documentação de deploy do Next.js](https://nextjs.org/docs/deployment) para mais informações.
-
----
-
-## Responsividade e Versão Mobile
-
-O RentRoom foi projetado para ser **100% responsivo**, garantindo uma experiência otimizada para dispositivos móveis e desktops. A plataforma ajusta automaticamente os elementos e o layout para proporcionar uma navegação agradável e funcional em telas menores. Veja abaixo algumas capturas de tela que mostram como a plataforma se adapta a dispositivos móveis:
-
-<p align="center">
-   <img src="https://media.graphassets.com/9i0m0ozhTeOuW7J60guU" alt="Página inicial" width="30%" style="margin-right: 5px;">
-   <img src="https://media.graphassets.com/1OBodPT5ySzQRqDn19PQ" alt="Página de login" width="30%" style="margin-right: 5px;">
-   <img src="https://media.graphassets.com/k60KaxalT02mxZnNT8QK" alt="Página de registro" width="30%">
-</p>
-<p align="center">
-   <img src="https://media.graphassets.com/eAFoIv4TcyxzYG9N4SnA" alt="Listagem de imóveis 1" width="30%" style="margin-right: 5px;">
-   <img src="https://media.graphassets.com/jIXkpSN1RvuFe0dQIM5K" alt="Listagem de imóveis 2" width="30%">
-</p>
-
+For more information, refer to the [Next.js deployment documentation](https://nextjs.org/docs/deployment).
 
 ---
 
-## Aprenda Mais
+## Learn More
 
-Para explorar mais sobre as tecnologias usadas, confira os links abaixo:
-
-- [Documentação do Next.js](https://nextjs.org/docs)
+- [Next.js Documentation](https://nextjs.org/docs)
 - [Prisma](https://www.prisma.io/docs/)
 - [NextAuth.js](https://next-auth.js.org/getting-started/introduction)
-- [Leaflet e React-Leaflet](https://react-leaflet.js.org/)
+- [Leaflet and React-Leaflet](https://react-leaflet.js.org/)
 
 ---
 
-O **RentRoom** está em constante aprimoramento para oferecer uma experiência de locação de imóveis otimizada e segura para todos os usuários.
+RentRoom is continuously being improved to provide an optimized experience for all users.
+
+---
+
+## Mobile Screenshots
+
+Below are screenshots of RentRoom’s mobile interface, showcasing the fully responsive design.
+
+<p align="center">
+   <img src="https://media.graphassets.com/9i0m0ozhTeOuW7J60guU" alt="Home Page" width="30%" style="margin-right: 5px;">
+   <img src="https://media.graphassets.com/1OBodPT5ySzQRqDn19PQ" alt="Login Page" width="30%" style="margin-right: 5px;">
+   <img src="https://media.graphassets.com/k60KaxalT02mxZnNT8QK" alt="Register Page" width="30%">
+</p>
+<p align="center">
+   <img src="https://media.graphassets.com/eAFoIv4TcyxzYG9N4SnA" alt="Property Listing 1" width="30%" style="margin-right: 5px;">
+   <img src="https://media.graphassets.com/jIXkpSN1RvuFe0dQIM5K" alt="Property Listing 2" width="30%">
+</p>
+
+This documentation covers the main aspects of RentRoom, including setup, features, and deployment instructions. The mobile interface is designed to be 100% responsive, ensuring usability across all screen sizes.
