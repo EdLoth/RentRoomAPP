@@ -54,7 +54,6 @@ const RentModal = () => {
 
   const category = watch('category');
   const location = watch('location');
-  console.log(location)
   const guestCount = watch('guestCount');
   const roomCount = watch('roomCount');
   const bathroomCount = watch('bathroomCount');
@@ -233,7 +232,7 @@ const RentModal = () => {
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
-      actionDisabled={isNextDisabled} // Desabilita o botão "Next" se necessário
+      actionDisabled={isNextDisabled} 
       title='RentRoom your home!'
       body={bodyContent}
     />
