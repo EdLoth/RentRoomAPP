@@ -45,6 +45,8 @@ RentRoom was built with the following technologies:
 - **[Leaflet](https://leafletjs.com/) and [React-Leaflet](https://react-leaflet.js.org/)**: Interactive maps display for property location visualization.
 - **[Tailwind CSS](https://tailwindcss.com/)**: CSS framework for fast, responsive styling.
 - **[Cloudinary](https://cloudinary.com/)**: Image manipulation and cloud storage.
+- **[MongoDB](https://www.mongodb.com/)**: Database used to save data.
+
 
 Other libraries include Axios for HTTP requests, date-fns for date handling, react-hook-form for form control, and react-hot-toast for notifications.
 
